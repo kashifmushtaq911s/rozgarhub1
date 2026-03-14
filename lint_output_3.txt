@@ -1,0 +1,38 @@
+
+H:\Rozgarhub\src\app\admin\jobs\page.tsx
+  3:10  warning  'Input' is defined but never used           @typescript-eslint/no-unused-vars
+  4:32  warning  'MoreHorizontal' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\cv\CVBuilderClient.tsx
+  10:24  warning  'Download' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+  40:20  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+H:\Rozgarhub\src\components\cv\CVBuilderClient.tsx:40:20
+  38 |
+  39 |   // Watch entire form value to pass down to PDF preview
+> 40 |   const formData = form.watch()
+     |                    ^^^^ React Hook Form's `useForm()` API returns a `watch()` function which cannot be memoized safely.
+  41 |
+  42 |   const { fields: expFields, append: appendExp, remove: removeExp } = useFieldArray({
+  43 |     control: form.control,  react-hooks/incompatible-library
+  63:16  warning  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\cv\CVDownloadButton.tsx
+  19:11  warning  'blob' is defined but never used   @typescript-eslint/no-unused-vars
+  19:17  warning  'url' is defined but never used    @typescript-eslint/no-unused-vars
+  19:31  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\cv\templates\ModernCV.tsx
+  3:50  warning  'Font' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\layout\Header.tsx
+  3:29  warning  'User' is defined but never used      @typescript-eslint/no-unused-vars
+  3:41  warning  'UserPlus' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\ui\accordion.tsx
+  15:3  warning  'type' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 12 problems (0 errors, 12 warnings)
+

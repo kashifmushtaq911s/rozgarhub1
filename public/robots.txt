@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /api
+
+# Host
+Host: https://rozgarhub.pk
+
+# Sitemaps
+Sitemap: https://rozgarhub.pk/sitemap.xml

@@ -1,0 +1,60 @@
+
+> rozgarhub@0.1.0 build
+> next build
+
+[1m[38;2;173;127;168m▲ Next.js 16.1.6[39m[22m (Turbopack)
+
+[37m[1m [22m[39m Creating an optimized production build ...
+Error: `@utility` cannot be nested.
+    [2m[at H:\Rozgarhub\node_modules\tailwindcss\dist\lib.js:32:3317][0m
+    [2m[at Pr (H:\Rozgarhub\node_modules\tailwindcss\dist\lib.js:3:1733)][0m
+    [2m[at _ (H:\Rozgarhub\node_modules\tailwindcss\dist\lib.js:3:1377)][0m
+    [2m[at pn (H:\Rozgarhub\node_modules\tailwindcss\dist\lib.js:32:2712)][0m
+    [2m[at async dn (H:\Rozgarhub\node_modules\tailwindcss\dist\lib.js:38:631)][0m
+    [2m[at async Xr (H:\Rozgarhub\node_modules\@tailwindcss\node\dist\index.js:10:3417)][0m
+    [2m[at async N (H:\Rozgarhub\node_modules\@tailwindcss\postcss\dist\index.js:10:3979)][0m
+    [2m[at async Object.Once (H:\Rozgarhub\node_modules\@tailwindcss\postcss\dist\index.js:10:4251)][0m
+    [2mat async LazyResult.runAsync (node_modules/postcss/lib/lazy-result.js:293:11) [H:\Rozgarhub\.next\build\chunks\node_modules_fe693df6._.js:6214:21][0m
+    [2mat async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34) [H:\Rozgarhub\.next\build\chunks\[root-of-the-server]__51225daf._.js:146:36][0m
+
+> Build error occurred
+Error: Turbopack build failed with 2 errors:
+./src/app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: H:\Rozgarhub\src\app\globals.css:1:1: `@utility` cannot be nested.
+    at Input.error (node_modules/postcss/lib/input.js:135:16) [H:\Rozgarhub\.next\build\chunks\node_modules_fe693df6._.js:4651:22]
+    at Root.error (node_modules/postcss/lib/node.js:146:32) [H:\Rozgarhub\.next\build\chunks\node_modules_fe693df6._.js:928:38]
+    [at Object.Once (H:\Rozgarhub\node_modules\@tailwindcss\postcss\dist\index.js:10:6913)]
+    at async LazyResult.runAsync (node_modules/postcss/lib/lazy-result.js:293:11) [H:\Rozgarhub\.next\build\chunks\node_modules_fe693df6._.js:6214:21]
+    at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34) [H:\Rozgarhub\.next\build\chunks\[root-of-the-server]__51225daf._.js:146:36]
+    at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23) [H:\Rozgarhub\.next\build\chunks\[root-of-the-server]__974941ed._.js:443:31]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+./src/components/cv/CVBuilderClient.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/components/cv/CVBuilderClient.tsx [app-ssr] (ecmascript)
+
+Caused by:
+- ModuleId not found for ident: "[externals]/@react-pdf/renderer [external] (@react-pdf/renderer, esm_import, [project]/node_modules/@react-pdf/renderer)"
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/components/cv/CVBuilderClient.tsx [app-ssr] (ecmascript)
+- Execution of <MergedEcmascriptModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of *EcmascriptChunkItemContent::new failed
+- Execution of EcmascriptModuleContent::new_merged failed
+- Execution of <GlobalModuleIdStrategy as ModuleIdStrategy>::get_module_id failed
+- ModuleId not found for ident: "[externals]/@react-pdf/renderer [external] (@react-pdf/renderer, esm_import, [project]/node_modules/@react-pdf/renderer)"
+
+Import trace:
+  Server Component:
+    ./src/components/cv/CVBuilderClient.tsx
+    ./src/app/cv-builder/page.tsx
+
+
+    at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34) [H:\Rozgarhub\.next\build\chunks\[root-of-the-server]__51225daf._.js:146:36])
+    at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23) [H:\Rozgarhub\.next\build\chunks\[root-of-the-server]__974941ed._.js:443:31])

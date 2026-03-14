@@ -1,0 +1,70 @@
+
+> rozgarhub@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 42s
+  Running TypeScript ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/22) ...
+  Generating static pages using 3 workers (5/22) 
+  Generating static pages using 3 workers (10/22) 
+  Generating static pages using 3 workers (16/22) 
+✓ Generating static pages using 3 workers (22/22) in 1823.7ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ○ /admin
+├ ○ /admin/applications
+├ ○ /admin/jobs
+├ ○ /admin/settings
+├ ○ /admin/users
+├ ○ /contact
+├ ○ /cv-builder
+├ ○ /dashboard
+├ ○ /dashboard/alerts
+├ ○ /dashboard/applications
+├ ○ /dashboard/profile
+├ ○ /dashboard/saved-jobs
+├ ○ /faq
+├ ƒ /job/[slug]
+├ ○ /jobs
+├ ○ /privacy-policy
+├ ○ /terms
+└ ○ /why-us
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+> rozgarhub@0.1.0 postbuild
+> next-sitemap
+
+✨ [next-sitemap] Loading next-sitemap config: file:///H:/Rozgarhub/next-sitemap.config.js
+✅ [next-sitemap] Generation completed
+┌───────────────┬────────┐
+│ (index)       │ Values │
+├───────────────┼────────┤
+│ indexSitemaps │ 1      │
+│ sitemaps      │ 1      │
+└───────────────┴────────┘
+-----------------------------------------------------
+ SITEMAP INDICES 
+-----------------------------------------------------
+
+   ○ https://rozgarhub.pk/sitemap.xml
+
+
+-----------------------------------------------------
+ SITEMAPS 
+-----------------------------------------------------
+
+   ○ https://rozgarhub.pk/sitemap-0.xml
+
+

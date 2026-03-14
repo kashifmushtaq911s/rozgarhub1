@@ -1,0 +1,68 @@
+
+H:\Rozgarhub\src\app\admin\jobs\page.tsx
+  3:10  warning  'Input' is defined but never used           @typescript-eslint/no-unused-vars
+  4:32  warning  'MoreHorizontal' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\app\job\[slug]\page.tsx
+  26:26  error  Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+H:\Rozgarhub\src\app\job\[slug]\page.tsx:26:26
+  24 |     title: title,
+  25 |     description: `We are looking for an experienced ${title} to join our team.`,
+> 26 |     datePosted: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+     |                          ^^^^^^^^^^ Cannot call impure function
+  27 |     validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+  28 |     employmentType: 'FULL_TIME',
+  29 |     hiringOrganization: {                 react-hooks/purity
+  27:28  error  Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+H:\Rozgarhub\src\app\job\[slug]\page.tsx:27:28
+  25 |     description: `We are looking for an experienced ${title} to join our team.`,
+  26 |     datePosted: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+> 27 |     validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+     |                            ^^^^^^^^^^ Cannot call impure function
+  28 |     employmentType: 'FULL_TIME',
+  29 |     hiringOrganization: {
+  30 |       '@type': 'Organization',  react-hooks/purity
+
+H:\Rozgarhub\src\components\cv\CVBuilderClient.tsx
+  10:24  warning  'Download' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+  34:40  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-explicit-any
+  40:20  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+H:\Rozgarhub\src\components\cv\CVBuilderClient.tsx:40:20
+  38 |
+  39 |   // Watch entire form value to pass down to PDF preview
+> 40 |   const formData = form.watch()
+     |                    ^^^^ React Hook Form's `useForm()` API returns a `watch()` function which cannot be memoized safely.
+  41 |
+  42 |   const { fields: expFields, append: appendExp, remove: removeExp } = useFieldArray({
+  43 |     control: form.control,  react-hooks/incompatible-library
+  63:16  warning  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\cv\CVDownloadButton.tsx
+  19:11  warning  'blob' is defined but never used   @typescript-eslint/no-unused-vars
+  19:17  warning  'url' is defined but never used    @typescript-eslint/no-unused-vars
+  19:31  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\cv\templates\ModernCV.tsx
+  3:50  warning  'Font' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\layout\Header.tsx
+  3:29  warning  'User' is defined but never used      @typescript-eslint/no-unused-vars
+  3:41  warning  'UserPlus' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\ui\accordion.tsx
+  15:3  warning  'type' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\ui\input.tsx
+  4:18  error  An interface declaring no members is equivalent to its supertype  @typescript-eslint/no-empty-object-type
+
+✖ 16 problems (4 errors, 12 warnings)
+
