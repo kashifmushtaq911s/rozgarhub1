@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://rozgarhub.pk/about</loc><lastmod>2026-03-14T14:35:07.670Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://rozgarhub.pk/contact</loc><lastmod>2026-03-14T14:35:07.677Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://rozgarhub.pk/cv-builder</loc><lastmod>2026-03-14T14:35:07.677Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://rozgarhub.pk/faq</loc><lastmod>2026-03-14T14:35:07.677Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://rozgarhub.pk/jobs</loc><lastmod>2026-03-14T14:35:07.677Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://rozgarhub.pk</loc><lastmod>2026-03-14T14:35:07.677Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://rozgarhub.pk/privacy-policy</loc><lastmod>2026-03-14T14:35:07.677Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://rozgarhub.pk/terms</loc><lastmod>2026-03-14T14:35:07.677Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://rozgarhub.pk/why-us</loc><lastmod>2026-03-14T14:35:07.677Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/about</loc><lastmod>2026-03-17T15:37:12.833Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/contact</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/cv-builder</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/faq</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/job-application-help</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/jobs</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/privacy-policy</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/study-material</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/terms</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/upcoming</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://rozgarhub.pk/why-us</loc><lastmod>2026-03-17T15:37:12.836Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

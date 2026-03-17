@@ -1,52 +1,56 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { MapPin, Briefcase, Clock, DollarSign, Bookmark, ExternalLink } from "lucide-react"
+import Link from "next/link"
 
 export default function SavedJobsPage() {
   const savedJobs = [
-    { role: "Product Manager", company: "TechCorp Pakistan", location: "Lahore", type: "Full-time", salary: "Rs 250k - 400k", posted: "2d ago" },
-    { role: "Backend Engineer (Node.js)", company: "Innovate PK", location: "Karachi", type: "Full-time", salary: "Rs 180k - 250k", posted: "1w ago" },
-    { role: "Creative UI Designer", company: "DesignStudio", location: "Islamabad", type: "Contract", salary: "Rs 150k - 200k", posted: "5d ago" },
+    { role: "Product Manager", company: "TechCorp Pakistan", location: "Lahore", type: "Full-time", salary: "Rs 250k - 400k", posted: "15-03-2026" },
+    { role: "Backend Engineer (Node.js)", company: "Innovate PK", location: "Karachi", type: "Full-time", salary: "Rs 180k - 250k", posted: "10-03-2026" },
+    { role: "Creative UI Designer", company: "DesignStudio", location: "Islamabad", type: "Contract", salary: "Rs 150k - 200k", posted: "12-03-2026" },
   ]
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6">Saved Jobs</h1>
+    <div className="animate-fade-in">
+      <h1 className="text-4xl font-black mb-8 text-[#0f172a] tracking-tight">Saved <span className="text-[var(--color-primary)]">Jobs</span></h1>
       
-      <div className="space-y-4">
+      <div className="space-y-6">
         {savedJobs.map((job, i) => (
-          <Card key={i} className="hover:border-[var(--color-primary)]/50 transition-colors rounded-2xl border-[var(--color-border)] shadow-sm group">
-            <CardContent className="p-6">
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div className="flex gap-4">
-                  <div className="hidden sm:flex h-12 w-12 shrink-0 rounded-xl bg-[var(--color-secondary)] items-center justify-center">
-                    <Briefcase size={24} className="text-[var(--color-muted-foreground)]" />
+          <Card key={i} className="group rounded-[2.5rem] border-[#e2e8f0] bg-white shadow-sm hover:border-[var(--color-primary)]/20 transition-all hover:shadow-2xl hover:shadow-blue-900/5">
+            <CardContent className="p-8">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div className="flex gap-6">
+                  <div className="hidden sm:flex h-16 w-16 shrink-0 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] items-center justify-center transition-all group-hover:bg-[var(--color-primary)]/5 group-hover:border-[var(--color-primary)]/10">
+                    <Briefcase size={28} className="text-[#64748b] group-hover:text-[var(--color-primary)]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg group-hover:text-[var(--color-primary)] transition-colors">{job.role}</h3>
-                    <div className="text-[var(--color-muted-foreground)] font-medium mb-3">{job.company}</div>
-                    <div className="flex flex-wrap gap-2 text-xs font-medium">
-                      <span className="inline-flex items-center gap-1 rounded-md bg-[var(--color-secondary)] px-2 py-1 text-[var(--color-secondary-foreground)]">
-                        <MapPin size={12} /> {job.location}
+                    <h3 className="font-black text-xl text-[#0f172a] group-hover:text-[var(--color-primary)] transition-colors tracking-tight mb-2">{job.role}</h3>
+                    <div className="text-[#64748b] font-bold mb-5 flex items-center gap-2">
+                       <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]/40"></span>
+                       {job.company}
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f5f9] px-4 py-1.5 text-xs font-black text-[#475569] uppercase tracking-wider">
+                        <MapPin size={14} className="text-[var(--color-primary)]" /> {job.location}
                       </span>
-                      <span className="inline-flex items-center gap-1 rounded-md bg-[var(--color-secondary)] px-2 py-1 text-[var(--color-secondary-foreground)]">
-                        <Clock size={12} /> {job.type}
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f5f9] px-4 py-1.5 text-xs font-black text-[#475569] uppercase tracking-wider">
+                        <Clock size={14} className="text-[var(--color-primary)]" /> {job.type}
                       </span>
-                      <span className="inline-flex items-center gap-1 rounded-md bg-green-500/10 px-2 py-1 text-green-700 dark:text-green-400">
-                        <DollarSign size={12} /> {job.salary}
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-4 py-1.5 text-xs font-black text-green-700 uppercase tracking-wider border border-green-100">
+                        <DollarSign size={14} /> {job.salary}
                       </span>
                     </div>
                   </div>
                 </div>
                 
-                <div className="flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-center gap-4 border-t lg:border-t-0 border-[var(--color-border)] pt-4 lg:pt-0">
-                   <div className="text-xs text-[var(--color-muted-foreground)] flex items-center gap-1"><Clock size={12}/> Posted {job.posted}</div>
-                   <div className="flex gap-2">
-                     <Button variant="outline" size="sm" className="gap-2 text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5">
-                        <Bookmark size={16} fill="currentColor" /> Saved
+                <div className="flex flex-col items-end justify-center gap-5 pt-6 lg:pt-0 border-t lg:border-t-0 border-[#e2e8f0]">
+                   <div className="text-sm text-[#94a3b8] font-bold flex items-center gap-2"><Clock size={16}/> Posted {job.posted}</div>
+                   <div className="flex gap-3 w-full lg:w-auto">
+                     <Button variant="outline" className="flex-1 lg:flex-none h-12 rounded-2xl gap-2 border-[#e2e8f0] text-[#0f172a] font-bold hover:bg-neutral-50 transition-all">
+                        <Bookmark size={18} fill="currentColor" className="text-[var(--color-primary)]" /> Saved
                      </Button>
-                     <Button size="sm" className="gap-2">
-                        Apply <ExternalLink size={14} />
+                     <Button className="flex-1 lg:flex-none h-12 rounded-2xl gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] font-black transition-all shadow-lg shadow-blue-900/10">
+                        Apply Now <ExternalLink size={16} />
                      </Button>
                    </div>
                 </div>
@@ -54,6 +58,14 @@ export default function SavedJobsPage() {
             </CardContent>
           </Card>
         ))}
+        
+        {savedJobs.length === 0 && (
+          <div className="text-center py-24 bg-white rounded-[2.5rem] border-2 border-dashed border-[#e2e8f0]">
+             <Bookmark size={48} className="mx-auto text-[#cbd5e1] mb-6" />
+             <p className="text-xl font-bold text-[#64748b]">No saved jobs found.</p>
+             <Link href="/jobs" className="mt-8 inline-block text-[var(--color-primary)] font-black hover:underline uppercase tracking-widest text-sm">Explore latest opportunities</Link>
+          </div>
+        )}
       </div>
     </div>
   )

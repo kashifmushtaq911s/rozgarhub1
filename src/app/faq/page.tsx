@@ -17,11 +17,11 @@ const FAQS = [
   },
   {
     question: "Can I save jobs to apply later?",
-    answer: "Yes. Once you create an account and log in, you can click the bookmark icon on any job listing to save it to your Job Seeker Dashboard."
+    answer: "Currently, we don't require user accounts to browse jobs. You can simply bookmark the job page in your web browser to save it for later."
   },
   {
-    question: "How do I update my profile?",
-    answer: "Go to your Dashboard, select 'Profile' from the sidebar, and you can update your contact information, experience, and upload a new profile picture."
+    question: "Do I need an account to apply?",
+    answer: "No! You can apply directly through the provided application links without needing to create an account or maintain a profile on our site."
   },
   {
     question: "Are remote jobs available?",
@@ -32,22 +32,22 @@ const FAQS = [
 export default function FAQPage() {
   return (
     <div className="container mx-auto px-4 py-24 sm:px-8 max-w-4xl flex-1 animate-fade-in">
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-[#2d3748]">Got <span className="text-[var(--color-primary)]">Questions?</span></h1>
-        <p className="text-xl text-[#6b7280] max-w-2xl mx-auto leading-relaxed">
-          Everything you need to know about navigating Pakistan&apos;s premier job portal.
+      <div className="text-center mb-20">
+        <h1 className="text-5xl md:text-7xl font-black mb-6 text-[#0f172a] tracking-tight leading-tight">Got <span className="text-[var(--color-primary)]">Questions?</span></h1>
+        <p className="text-xl text-[#475569] max-w-2xl mx-auto leading-relaxed font-medium">
+          Everything you need to know about navigating Pakistan&apos;s premier job portal. Your career journey is just a search away.
         </p>
       </div>
 
-      <div className="grid gap-6">
+      <div className="grid gap-8">
         {FAQS.map((faq, index) => (
-          <Card key={index} className="rounded-3xl border-[#e2e8f0] shadow-sm hover:border-[var(--color-primary)]/30 transition-all hover:shadow-md">
-            <CardContent className="p-8">
-              <h3 className="text-xl font-bold mb-4 text-[#2d3748] flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm">?</span>
+          <Card key={index} className="group rounded-[2.5rem] border-[#e2e8f0] bg-white shadow-sm hover:border-[var(--color-primary)]/20 transition-all hover:shadow-2xl hover:shadow-blue-900/10 cursor-default">
+            <CardContent className="p-10">
+              <h3 className="text-2xl font-black mb-6 text-[#0f172a] flex items-start gap-5 transition-colors group-hover:text-[var(--color-primary)] leading-tight">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-lg font-black group-hover:bg-[var(--color-primary)] group-hover:text-white transition-all transform group-hover:scale-110">?</span>
                 {faq.question}
               </h3>
-              <p className="text-lg text-[#6b7280] leading-relaxed ml-11">{faq.answer}</p>
+              <p className="text-lg text-[#475569] leading-relaxed ml-0 md:ml-15 font-medium border-l-4 border-[var(--color-primary)]/10 pl-6 md:pl-10">{faq.answer}</p>
             </CardContent>
           </Card>
         ))}

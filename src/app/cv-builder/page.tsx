@@ -8,14 +8,14 @@ export const metadata: Metadata = {
 
 export default function CVBuilderPage() {
   return (
-    <div className="container mx-auto px-4 py-8 sm:px-8 flex-1 flex flex-col">
-      <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div className="container mx-auto px-4 py-16 sm:px-8 flex-1 flex flex-col animate-fade-in">
+      <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#e2e8f0] pb-10">
         <div>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#2d3748] mb-4">Build Your <span className="text-[var(--color-primary)]">CV</span></h1>
-          <p className="text-xl text-[#6b7280] max-w-2xl">Create your resume instantly with our premium templates. Live preview as you type.</p>
-        </div>
-        <div className="inline-flex h-8 items-center rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/5 px-3 text-xs font-medium text-[var(--color-primary)]">
-          Free CV generation
+          <div className="inline-flex items-center gap-2 rounded-full bg-[var(--color-primary)]/10 px-4 py-1.5 text-xs font-black mb-6 text-[var(--color-primary)] uppercase tracking-widest border border-[var(--color-primary)]/10">
+            Professional CV Builder
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight text-[#0f172a] mb-6 leading-tight">Build Your <span className="text-[var(--color-primary)]">Future</span></h1>
+          <p className="text-xl text-[#475569] max-w-2xl font-medium leading-relaxed">Create a high-impact resume instantly with our premium international templates. Real-time preview as you type.</p>
         </div>
       </div>
       

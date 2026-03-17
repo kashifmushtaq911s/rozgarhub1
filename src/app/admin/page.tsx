@@ -1,145 +1,158 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Briefcase, FileText, TrendingUp, Activity } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Briefcase, FileText, TrendingUp, Activity, Clock, ShieldCheck, Plus, Eye, CheckCircle, AlertCircle } from "lucide-react"
+import { getAdminMetrics } from "@/actions/admin"
+import Link from "next/link"
+import { formatDate } from "@/lib/utils"
 
-export default function AdminOverview() {
+export default async function AdminOverview() {
+  const data = await getAdminMetrics()
+
+  const metrics = [
+    {
+      label: "Live Jobs",
+      value: (data as any).jobs.toString(),
+      icon: Briefcase,
+      trend: "+12%",
+      color: "from-emerald-500 to-teal-600",
+      description: "Active opportunities on Rozgarhub"
+    },
+    {
+      label: "Expired Jobs",
+      value: (data as any).expiredJobs.toString(),
+      icon: Clock,
+      trend: "Critical",
+      color: "from-red-500 to-rose-600",
+      description: "Jobs past their deadline"
+    },
+    {
+      label: "CVs Generated",
+      value: (data as any).cvs.toString(),
+      icon: FileText,
+      trend: "+5%",
+      color: "from-blue-500 to-indigo-600",
+      description: "Professional resumes by talent"
+    }
+  ]
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6">Admin Overview</h1>
-      
-      {/* Key Metrics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex justify-between items-start mb-4">
-              <div className="bg-blue-500/10 text-blue-500 p-2 rounded-lg">
-                <Users size={20} />
-              </div>
-              <span className="flex items-center text-xs font-semibold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">
-                <TrendingUp size={12} className="mr-1" /> +12%
-              </span>
-            </div>
-            <div>
-              <p className="text-3xl font-bold">12,450</p>
-              <p className="text-sm text-[var(--color-muted-foreground)] font-medium">Total Users</p>
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex justify-between items-start mb-4">
-              <div className="bg-[var(--color-primary)]/10 text-[var(--color-primary)] p-2 rounded-lg">
-                <Briefcase size={20} />
-              </div>
-              <span className="flex items-center text-xs font-semibold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">
-                <TrendingUp size={12} className="mr-1" /> +5%
-              </span>
-            </div>
-            <div>
-              <p className="text-3xl font-bold">3,205</p>
-              <p className="text-sm text-[var(--color-muted-foreground)] font-medium">Active Jobs</p>
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex justify-between items-start mb-4">
-              <div className="bg-purple-500/10 text-purple-500 p-2 rounded-lg">
-                <FileText size={20} />
-              </div>
-              <span className="flex items-center text-xs font-semibold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">
-                <TrendingUp size={12} className="mr-1" /> +24%
-              </span>
-            </div>
-            <div>
-              <p className="text-3xl font-bold">45.2k</p>
-              <p className="text-sm text-[var(--color-muted-foreground)] font-medium">Applications Sent</p>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex justify-between items-start mb-4">
-              <div className="bg-orange-500/10 text-orange-500 p-2 rounded-lg">
-                <Activity size={20} />
-              </div>
-              <span className="flex items-center text-xs font-semibold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">
-                <TrendingUp size={12} className="mr-1" /> +8%
-              </span>
-            </div>
-            <div>
-              <p className="text-3xl font-bold">8,432</p>
-              <p className="text-sm text-[var(--color-muted-foreground)] font-medium">CVs Generated</p>
-            </div>
-          </CardContent>
-        </Card>
+    <div className="space-y-12">
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div>
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-2">Control <span className="text-emerald-600">Terminal</span></h1>
+          <p className="text-slate-500 font-medium">Platform orchestration and recruitment intelligence.</p>
+        </div>
+        <div className="flex items-center gap-4 bg-white p-2.5 rounded-[1.5rem] shadow-sm border border-slate-100">
+           <div className="h-10 px-5 flex items-center gap-3 text-sm font-bold text-slate-500 bg-slate-50 rounded-xl">
+              <Clock size={16} className="text-emerald-500" />
+              {formatDate(new Date())}
+           </div>
+           <Link href="/admin/jobs/new">
+            <button className="h-10 px-6 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-black transition-all shadow-lg shadow-emerald-600/20 active:scale-95 flex items-center gap-2">
+                <Plus size={18} /> New Posting
+            </button>
+           </Link>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Recent Users */}
-        <Card className="rounded-2xl border-[var(--color-border)] shadow-sm">
-          <CardHeader>
-            <CardTitle className="text-xl">Recent Users</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {[
-                { name: "Ahmed Khan", role: "Job Seeker", status: "Active", joined: "2 hours ago" },
-                { name: "TechCorp PK", role: "Employer", status: "Pending", joined: "5 hours ago" },
-                { name: "Sara Ali", role: "Job Seeker", status: "Active", joined: "1 day ago" },
-                { name: "Innovate Solutions", role: "Employer", status: "Active", joined: "1 day ago" },
-              ].map((user, i) => (
-                <div key={i} className="flex items-center justify-between p-3 border border-[var(--color-border)] rounded-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-full bg-[var(--color-secondary)] flex items-center justify-center font-bold text-[var(--color-muted-foreground)]">
-                      {user.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-sm">{user.name}</p>
-                      <p className="text-xs text-[var(--color-muted-foreground)]">{user.role} • {user.joined}</p>
-                    </div>
-                  </div>
-                  <span className={`px-2 py-1 text-xs rounded-full font-medium ${
-                    user.status === 'Active' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400'
-                  }`}>
-                    {user.status}
-                  </span>
+      {/* Modern Analytics Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {metrics.map((metric, i) => (
+          <Card key={i} className="group relative overflow-hidden rounded-[2.5rem] border-none shadow-2xl shadow-slate-200/40 bg-white transition-all duration-500 hover:-translate-y-2">
+            <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${metric.color} opacity-[0.03] rounded-full -mr-16 -mt-16 transition-all group-hover:scale-150 duration-700`}></div>
+            <CardContent className="p-10">
+              <div className="flex justify-between items-start mb-10">
+                <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${metric.color} text-white flex items-center justify-center shadow-2xl shadow-emerald-500/20 group-hover:rotate-6 transition-transform`}>
+                  <metric.icon size={32} />
                 </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+                <div className="flex flex-col items-end">
+                   <div className="flex items-center gap-1 text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">
+                    <TrendingUp size={12} /> {metric.trend}
+                  </div>
+                </div>
+              </div>
 
-        {/* Jobs Needing Approval */}
-        <Card className="rounded-2xl border-[var(--color-border)] shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="text-xl">Jobs Needing Approval</CardTitle>
-            <span className="bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">3</span>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {[
-                { title: "Senior Python Dev", company: "DataSync", type: "Full-time", submitted: "1 hr ago" },
-                { title: "Marketing Manager", company: "Growth PK", type: "Contract", submitted: "3 hrs ago" },
-                { title: "iOS Developer", company: "AppX", type: "Full-time", submitted: "5 hrs ago" },
-              ].map((job, i) => (
-                <div key={i} className="flex items-center justify-between p-3 border border-[var(--color-border)] rounded-xl">
-                  <div>
-                    <p className="font-semibold text-sm">{job.title}</p>
-                    <p className="text-xs text-[var(--color-muted-foreground)]">{job.company} • {job.type}</p>
-                  </div>
-                  <div className="flex gap-2 text-xs">
-                    <button className="text-green-600 hover:text-green-700 font-semibold px-2 py-1 rounded hover:bg-green-50">Approve</button>
-                    <button className="text-red-600 hover:text-red-700 font-semibold px-2 py-1 rounded hover:bg-red-50">Reject</button>
-                  </div>
-                </div>
-              ))}
+              <div className="space-y-1">
+                <h3 className="text-xs font-black uppercase tracking-widest text-slate-400 font-sans">{metric.label}</h3>
+                <p className="text-5xl font-black text-slate-900 tracking-tighter">{metric.value}</p>
+                <p className="text-slate-400 font-medium text-xs pt-6 mt-6 border-t border-slate-50">{metric.description}</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+
+      {/* Recent Activity Table */}
+      <div className="bg-white rounded-[3rem] border border-slate-100 shadow-2xl shadow-slate-200/40 overflow-hidden">
+         <div className="p-10 border-b border-slate-50 flex items-center justify-between">
+            <div>
+               <h3 className="text-2xl font-black text-slate-900 tracking-tight">Priority Listings</h3>
+               <p className="text-slate-400 font-medium text-sm">Real-time snapshots of recent deployments.</p>
             </div>
-          </CardContent>
-        </Card>
+            <Link href="/admin/jobs">
+               <button className="px-6 h-12 rounded-xl border border-slate-200 text-slate-500 font-bold hover:bg-slate-50 transition-all text-sm">Full Inventory</button>
+            </Link>
+         </div>
+         <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+               <thead>
+                  <tr className="bg-slate-50/50">
+                     <th className="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100">Reference</th>
+                     <th className="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100">Institute</th>
+                     <th className="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100 text-center">Domain</th>
+                     <th className="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100 text-center">Status</th>
+                     <th className="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100 text-right">Action</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {data.recentJobs && data.recentJobs.length > 0 ? (
+                    data.recentJobs.map((job: any, i: number) => (
+                      <tr key={i} className="group hover:bg-slate-50/50 transition-colors">
+                        <td className="p-6">
+                            <p className="font-bold text-slate-700 leading-tight">{job.title}</p>
+                            <p className="text-[10px] text-slate-400 font-black uppercase mt-1">Ref: RZH-{job.id.slice(0,5)}</p>
+                        </td>
+                        <td className="p-6 text-sm font-bold text-slate-600">{job.company}</td>
+                        <td className="p-6 text-center">
+                            <span className="px-3 py-1 rounded-lg bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase">{job.category}</span>
+                        </td>
+                        <td className="p-6">
+                            <div className="flex items-center justify-center gap-2">
+                                {job.deadline && new Date(job.deadline) < new Date() ? (
+                                  <>
+                                    <div className="h-2 w-2 rounded-full bg-red-500"></div>
+                                    <span className="text-xs font-bold text-red-600">Expired</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
+                                    <span className="text-xs font-bold text-slate-600">Active</span>
+                                  </>
+                                )}
+                            </div>
+                        </td>
+                        <td className="p-6 text-right">
+                            <Link href="/admin/jobs">
+                              <button className="h-9 w-9 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-100 hover:shadow-sm transition-all ml-auto">
+                                <Eye size={16} />
+                              </button>
+                            </Link>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={5} className="p-12 text-center text-slate-400 font-medium text-sm italic">
+                        No active deployments detected.
+                      </td>
+                    </tr>
+                  )}
+               </tbody>
+            </table>
+         </div>
       </div>
     </div>
   )
 }
+
