@@ -14,10 +14,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Rozgarhub | Modern Job Portal Pakistan",
-  description: "Find your dream job in Pakistan. Build your CV, apply to jobs, and get hired.",
-};
+import { getSiteSettings } from "@/actions/settings";
+
+export async function generateMetadata() {
+  const { data } = await getSiteSettings()
+  const siteName = data?.site_name || "Rozgarhub"
+  const metaDesc = data?.meta_description || "Find your dream job in Pakistan. Build your CV, apply to jobs, and get hired."
+  
+  return {
+    title: `${siteName} | Modern Job Portal Pakistan`,
+    description: metaDesc,
+  }
+}
 
 export default function RootLayout({
   children,
