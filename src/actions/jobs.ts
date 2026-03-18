@@ -29,15 +29,15 @@ export async function postJob(formData: FormData) {
       const arrayBuffer = await logoFile.arrayBuffer()
       const buffer = Buffer.from(arrayBuffer)
       
-      const uploadResponse = await new Promise((resolve, reject) => {
+      const uploadResponse = (await new Promise<{ secure_url: string }>((resolve, reject) => {
         cloudinary.uploader.upload_stream(
           { folder: "rozgarhub/logos" },
-          (error, result) => {
-            if (error) reject(error)
-            else resolve(result)
+          (error: any, result: any) => {
+            if (error || !result) reject(error || new Error("Upload failed"))
+            else resolve(result as { secure_url: string })
           }
         ).end(buffer)
-      }) as any
+      }))
       
       logo_url = uploadResponse.secure_url
     }
@@ -77,9 +77,10 @@ export async function postJob(formData: FormData) {
     revalidatePath("/jobs")
     
     return { success: true, data }
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Something went wrong"
     console.error("Action Error:", err)
-    return { success: false, error: err.message || "Something went wrong" }
+    return { success: false, error: message }
   }
 }
 
@@ -97,7 +98,7 @@ export async function getPublishedJobs() {
     }
 
     return { success: true, data: data || [] }
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Error fetching jobs:", err)
     return { success: false, data: [] }
   }

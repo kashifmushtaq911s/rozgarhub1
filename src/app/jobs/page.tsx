@@ -232,7 +232,7 @@ export default function JobsPage() {
                                   </span>
                                 )}
                                 {job.scale && job.scale !== "N/A" && (
-                                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-50 border border-indigo-100 px-3 py-1.5 text-indigo-600 font-black">
+                                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-50 border border-blue-100 px-3 py-1.5 text-blue-600 font-black">
                                     {job.scale}
                                   </span>
                                 )}

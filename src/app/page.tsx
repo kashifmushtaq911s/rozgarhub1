@@ -245,7 +245,7 @@ export default function Home() {
                         <p className="font-bold text-slate-600">FAST NUCES, Lahore</p>
                         <div className="flex justify-between items-end">
                            <div className="mt-1">
-                             <span className="px-1.5 py-0.5 bg-indigo-50 text-indigo-600 text-[6px] border border-indigo-100 font-black rounded uppercase tracking-tighter">CGPA: 3.85 / 4.0</span>
+                             <span className="px-1.5 py-0.5 bg-blue-50 text-blue-600 text-[6px] border border-blue-100 font-black rounded uppercase tracking-tighter">CGPA: 3.85 / 4.0</span>
                            </div>
                            <div className="flex flex-col items-end opacity-60">
                               <p className="text-[6px] font-black text-slate-400 uppercase">Certifications</p>

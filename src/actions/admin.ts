@@ -5,8 +5,7 @@ import { supabase } from "@/lib/supabase"
 export async function getAdminMetrics() {
   try {
     // Get Jobs Metrics
-    const now = new Date().toISOString()
-    const { data: allJobs, error: jobsError } = await supabase
+    const { data: allJobs } = await supabase
       .from("posting")
       .select("deadline")
 
@@ -15,7 +14,7 @@ export async function getAdminMetrics() {
     const expiredJobs = totalJobs - liveJobs
 
     // Get Users Count
-    const { count: usersCount, error: usersError } = await supabase
+    const { count: usersCount } = await supabase
       .from("users")
       .select("*", { count: "exact", head: true })
 
@@ -57,7 +56,7 @@ export async function getAdminJobs() {
 
     if (error) throw error
     return { success: true, data }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Fetch Jobs Error:", error)
     return { success: false, data: [] }
   }
@@ -79,9 +78,10 @@ export async function deleteJob(id: string) {
     })
 
     return { success: true }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "An unknown error occurred"
     console.error("Delete Job Error:", error)
-    return { success: false, error: error.message }
+    return { success: false, error: message }
   }
 }
 
@@ -95,9 +95,10 @@ export async function getJobById(id: string) {
 
     if (error) throw error
     return { success: true, data }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "An unknown error occurred"
     console.error("Get Job Error:", error)
-    return { success: false, error: error.message }
+    return { success: false, error: message }
   }
 }
 
@@ -120,7 +121,7 @@ export async function updateJob(id: string, formData: FormData) {
     
     // Handle Logo Update if new one provided
     const logoFile = formData.get("logo_url") as File | null
-    let updateData: any = {
+    const updateData: Record<string, string | null> = {
       title, company, category, type, salary, province, city, deadline, 
       description, requirements, application_link, 
       direct_website_url: website_url, image_url_link: image_url, scale,
@@ -132,15 +133,15 @@ export async function updateJob(id: string, formData: FormData) {
       const buffer = Buffer.from(arrayBuffer)
       
       const cloudinary = (await import("@/lib/cloudinary")).default
-      const uploadResponse = await new Promise((resolve, reject) => {
+      const uploadResponse = (await new Promise<{ secure_url: string }>((resolve, reject) => {
         cloudinary.uploader.upload_stream(
           { folder: "rozgarhub/logos" },
-          (error, result) => {
-            if (error) reject(error)
-            else resolve(result)
+          (error: any, result: any) => {
+            if (error || !result) reject(error || new Error("Upload failed"))
+            else resolve(result as { secure_url: string })
           }
         ).end(buffer)
-      }) as any
+      }))
       
       updateData.logo_url = uploadResponse.secure_url
     }
@@ -160,9 +161,10 @@ export async function updateJob(id: string, formData: FormData) {
     })
     
     return { success: true }
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "An unknown error occurred"
     console.error("Update Job Error:", err)
-    return { success: false, error: err.message }
+    return { success: false, error: message }
   }
 }
 
@@ -175,7 +177,7 @@ export async function getUsers() {
 
     if (error) throw error
     return { success: true, data }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Fetch Users Error:", error)
     return { success: false, data: [] }
   }
@@ -205,8 +207,9 @@ export async function registerAdmin(formData: FormData) {
 
     if (error) throw error
     return { success: true }
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "An unknown error occurred"
     console.error("Register Admin Error:", err)
-    return { success: false, error: err.message }
+    return { success: false, error: message }
   }
 }

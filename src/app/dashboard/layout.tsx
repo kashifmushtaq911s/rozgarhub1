@@ -21,7 +21,7 @@ export default function DashboardLayout({
           {/* Dashboard Header - Hidden on small mobile to save space, but visible in horizontal scroll if needed */}
           <div className="p-6 pb-2 hidden md:block">
             <div className="mb-8 px-4 flex items-center gap-4">
-              <div className="h-12 w-12 rounded-2xl bg-[var(--color-primary)] text-white flex items-center justify-center font-black text-lg shadow-lg shadow-green-500/10">
+              <div className="h-12 w-12 rounded-2xl bg-[var(--color-primary)] text-white flex items-center justify-center font-black text-lg shadow-lg shadow-blue-500/10">
                 JS
               </div>
               <div>

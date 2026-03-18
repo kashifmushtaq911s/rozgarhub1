@@ -49,8 +49,8 @@ export default function DashboardOverview() {
           <CardContent className="p-8 flex flex-col justify-between h-full">
             <div className="flex justify-between items-start">
               <p className="text-sm font-bold uppercase tracking-widest text-[#64748b]">Job Alerts</p>
-              <div className="h-10 w-10 rounded-xl bg-green-50 flex items-center justify-center">
-                <Briefcase size={20} className="text-green-500" />
+              <div className="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                <Briefcase size={20} className="text-blue-500" />
               </div>
             </div>
             <p className="text-4xl font-black text-[#0f172a]">3</p>
@@ -83,7 +83,7 @@ export default function DashboardOverview() {
                 <div>
                   <span className={`inline-flex items-center rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider ${
                     app.status === 'Under Review' ? 'bg-blue-50 text-blue-700 border border-blue-100' :
-                    app.status === 'Interviewed' ? 'bg-green-50 text-green-700 border border-green-100' :
+                    app.status === 'Interviewed' ? 'bg-blue-50 text-blue-700 border border-blue-100' :
                     'bg-slate-50 text-slate-600 border border-slate-100'
                   }`}>
                     {app.status}

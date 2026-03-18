@@ -70,7 +70,7 @@ export default function AdminStudyMaterialPage() {
 
       {/* Add/Edit Form */}
       <Card className="rounded-[2.5rem] border-none shadow-xl shadow-slate-200/60 bg-white overflow-hidden">
-        <div className="h-2 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+        <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-500"></div>
         <CardHeader className="bg-slate-50/50 border-b border-slate-100 p-8">
           <CardTitle className="text-xl font-black flex items-center gap-3 text-slate-800">
             <div className="h-8 w-8 rounded-lg bg-blue-500 text-white flex items-center justify-center">

@@ -86,15 +86,15 @@ export default function StudyMaterialPage() {
         ))}
       </div>
  
-      <div className="mt-20 bg-emerald-50 border-2 border-emerald-100 p-12 rounded-[4rem] text-center shadow-2xl shadow-emerald-900/5 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-100/50 blur-3xl rounded-full -mr-32 -mt-32"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-100/50 blur-3xl rounded-full -ml-32 -mb-32"></div>
+      <div className="mt-20 bg-blue-50 border-2 border-blue-100 p-12 rounded-[4rem] text-center shadow-2xl shadow-blue-900/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/50 blur-3xl rounded-full -mr-32 -mt-32"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-100/50 blur-3xl rounded-full -ml-32 -mb-32"></div>
         <h3 className="text-4xl font-black mb-6 text-slate-900 relative z-10">Need Specific Material?</h3>
         <p className="text-xl mb-10 text-slate-600 max-w-2xl mx-auto font-medium relative z-10">
           If you are looking for specific test preparation material that is not listed above, let us know and we will upload it for the community.
         </p>
         <Link href="/contact" className="inline-block relative z-10">
-          <button className="bg-emerald-600 text-white px-12 py-5 rounded-[2rem] font-black hover:bg-emerald-700 transition-all text-lg cursor-pointer shadow-xl shadow-emerald-500/20 active:scale-95">
+          <button className="bg-blue-600 text-white px-12 py-5 rounded-[2rem] font-black hover:bg-blue-700 transition-all text-lg cursor-pointer shadow-xl shadow-blue-500/20 active:scale-95">
             Request Material
           </button>
         </Link>

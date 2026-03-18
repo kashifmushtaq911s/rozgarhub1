@@ -73,10 +73,10 @@ export default function JobForm({ initialData, onSubmit, isEditing = false }: Jo
   return (
     <form onSubmit={handleSubmit} className="space-y-10 pb-32">
       <Card className="rounded-[2.5rem] border-slate-200 shadow-xl shadow-slate-200/50 bg-white overflow-hidden">
-        <div className="h-2 bg-gradient-to-r from-indigo-500 to-emerald-500"></div>
+        <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-500"></div>
         <CardHeader className="bg-slate-50/50 border-b border-slate-100 p-8">
           <CardTitle className="text-xl font-black flex items-center gap-3 text-slate-800 uppercase tracking-tighter">
-            <div className="h-8 w-8 rounded-lg bg-indigo-500 text-white flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-blue-500 text-white flex items-center justify-center">
                <Briefcase size={18} />
             </div>
             Identification
@@ -140,10 +140,10 @@ export default function JobForm({ initialData, onSubmit, isEditing = false }: Jo
       </Card>
 
       <Card className="rounded-[2.5rem] border-slate-200 shadow-xl shadow-slate-200/50 bg-white overflow-hidden">
-        <div className="h-2 bg-gradient-to-r from-emerald-500 to-blue-500"></div>
+        <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-500"></div>
         <CardHeader className="bg-slate-50/50 border-b border-slate-100 p-8">
           <CardTitle className="text-xl font-black flex items-center gap-3 text-slate-800">
-            <div className="h-8 w-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-blue-500 text-white flex items-center justify-center">
                <MapPin size={18} />
             </div>
             Placement & Timeline
@@ -168,8 +168,8 @@ export default function JobForm({ initialData, onSubmit, isEditing = false }: Jo
             <div className="flex items-center justify-between mb-2">
                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">deadline</label>
                <div className="flex bg-slate-100 p-1 rounded-xl">
-                  <button type="button" onClick={() => setDeadlineType("date")} className={`px-3 py-1.5 text-[10px] font-black rounded-lg ${deadlineType === "date" ? "bg-white text-indigo-600 shadow-sm" : "text-slate-400"}`}>FIXED</button>
-                  <button type="button" onClick={() => setDeadlineType("relative")} className={`px-3 py-1.5 text-[10px] font-black rounded-lg ${deadlineType === "relative" ? "bg-white text-indigo-600 shadow-sm" : "text-slate-400"}`}>RELATIVE</button>
+                  <button type="button" onClick={() => setDeadlineType("date")} className={`px-3 py-1.5 text-[10px] font-black rounded-lg ${deadlineType === "date" ? "bg-white text-blue-600 shadow-sm" : "text-slate-400"}`}>FIXED</button>
+                  <button type="button" onClick={() => setDeadlineType("relative")} className={`px-3 py-1.5 text-[10px] font-black rounded-lg ${deadlineType === "relative" ? "bg-white text-blue-600 shadow-sm" : "text-slate-400"}`}>RELATIVE</button>
                </div>
             </div>
             {deadlineType === "date" ? (
@@ -203,11 +203,11 @@ export default function JobForm({ initialData, onSubmit, isEditing = false }: Jo
         <CardContent className="p-10 space-y-8">
           <div className="space-y-3">
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">description</label>
-            <textarea name="description" defaultValue={initialData?.description} required rows={8} className="w-full rounded-[2rem] border border-slate-200 px-6 py-6 font-bold text-slate-600 focus:outline-none focus:ring-4 focus:ring-indigo-100 resize-none" />
+            <textarea name="description" defaultValue={initialData?.description} required rows={8} className="w-full rounded-[2rem] border border-slate-200 px-6 py-6 font-bold text-slate-600 focus:outline-none focus:ring-4 focus:ring-blue-100 resize-none" />
           </div>
           <div className="space-y-3">
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">requirements</label>
-            <textarea name="requirements" defaultValue={initialData?.requirements} rows={6} className="w-full rounded-[2rem] border border-slate-200 px-6 py-6 font-bold text-slate-600 focus:outline-none focus:ring-4 focus:ring-indigo-100 resize-none" />
+            <textarea name="requirements" defaultValue={initialData?.requirements} rows={6} className="w-full rounded-[2rem] border border-slate-200 px-6 py-6 font-bold text-slate-600 focus:outline-none focus:ring-4 focus:ring-blue-100 resize-none" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
@@ -228,7 +228,7 @@ export default function JobForm({ initialData, onSubmit, isEditing = false }: Jo
 
       <div className="flex justify-end gap-6">
         <Button variant="outline" type="button" onClick={() => router.back()} className="rounded-2xl px-10 h-16 font-black uppercase text-xs">Cancel</Button>
-        <Button type="submit" disabled={loading} className="rounded-2xl px-12 h-16 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-black shadow-2xl uppercase text-xs">
+        <Button type="submit" disabled={loading} className="rounded-2xl px-12 h-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black shadow-2xl uppercase text-xs">
           {loading ? <div className="h-6 w-6 border-4 border-white/20 border-t-white rounded-full animate-spin" /> : <><Save size={20} /> {isEditing ? "Update Job Listing" : "Post Job Listing"}</>}
         </Button>
       </div>

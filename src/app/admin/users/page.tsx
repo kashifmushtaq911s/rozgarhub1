@@ -6,8 +6,17 @@ import { useState, useEffect } from "react"
 import { getUsers, registerAdmin } from "@/actions/admin"
 import { formatDate } from "@/lib/utils"
 
+interface User {
+  id: string
+  full_name: string
+  email: string
+  is_admin: boolean
+  role?: string
+  created_at: string
+}
+
 export default function AdminUsersPage() {
-  const [users, setUsers] = useState<any[]>([])
+  const [users, setUsers] = useState<User[]>([])
   const [loading, setLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [registerLoading, setRegisterLoading] = useState(false)
@@ -44,7 +53,7 @@ export default function AdminUsersPage() {
     <div className="space-y-10">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-2">User <span className="text-indigo-600">Directory</span></h1>
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-2">User <span className="text-blue-600">Directory</span></h1>
           <p className="text-slate-500 font-medium">Monitor and regulate access control for the platform.</p>
         </div>
         <div className="flex gap-4">
@@ -53,7 +62,7 @@ export default function AdminUsersPage() {
            </Button>
            <Button 
             onClick={() => setIsModalOpen(true)}
-            className="h-14 px-8 rounded-2xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-black shadow-xl shadow-indigo-500/20 gap-3 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="h-14 px-8 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-black shadow-xl shadow-blue-500/20 gap-3 transition-all hover:scale-[1.02] active:scale-[0.98]"
            >
               <Plus size={20} /> Register New Admin
            </Button>
@@ -62,8 +71,8 @@ export default function AdminUsersPage() {
 
       <Card className="rounded-[2.5rem] border-none shadow-xl shadow-slate-200/60 bg-white overflow-hidden">
         <CardContent className="p-8 flex flex-col md:flex-row gap-6">
-          <div className="flex-1 flex items-center bg-slate-50 rounded-2xl px-6 border border-slate-100 focus-within:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-100 transition-all h-14 group">
-            <Search className="text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+          <div className="flex-1 flex items-center bg-slate-50 rounded-2xl px-6 border border-slate-100 focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-100 transition-all h-14 group">
+            <Search className="text-slate-400 group-focus-within:text-blue-500 transition-colors" size={20} />
             <input 
               type="text" 
               placeholder="Search by name, email or ID..." 
@@ -71,7 +80,7 @@ export default function AdminUsersPage() {
             />
           </div>
           <div className="flex gap-4">
-            <Button variant="outline" className="h-14 px-6 rounded-2xl border-slate-100 bg-slate-50 text-slate-500 font-bold hover:bg-white hover:border-indigo-200 hover:text-indigo-600 transition-all gap-2">
+            <Button variant="outline" className="h-14 px-6 rounded-2xl border-slate-100 bg-slate-50 text-slate-500 font-bold hover:bg-white hover:border-blue-200 hover:text-blue-600 transition-all gap-2">
               <Filter size={18} /> Filters
             </Button>
           </div>
@@ -94,7 +103,7 @@ export default function AdminUsersPage() {
               {loading ? (
                 <tr>
                   <td colSpan={5} className="p-24 text-center">
-                    <Loader2 size={40} className="mx-auto text-indigo-600 animate-spin mb-4" />
+                    <Loader2 size={40} className="mx-auto text-blue-600 animate-spin mb-4" />
                     <p className="font-bold text-slate-500">Retrieving system accounts...</p>
                   </td>
                 </tr>
@@ -103,7 +112,7 @@ export default function AdminUsersPage() {
                   <tr key={u.id} className="border-b border-slate-50 hover:bg-slate-50/50 transition-all group">
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-4">
-                        <div className="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center text-indigo-600 font-bold shadow-inner">
+                        <div className="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 font-bold shadow-inner">
                           {u.full_name?.charAt(0) || u.email?.charAt(0).toUpperCase()}
                         </div>
                         <span className="font-black text-slate-900 uppercase tracking-tight">{u.full_name || "N/A"}</span>
@@ -113,8 +122,8 @@ export default function AdminUsersPage() {
                     <td className="px-8 py-6 text-center">
                       <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${
                         u.is_admin 
-                        ? "bg-indigo-50 text-indigo-600 border-indigo-100" 
-                        : "bg-emerald-50 text-emerald-600 border-emerald-100"
+                        ? "bg-blue-50 text-blue-600 border-blue-100" 
+                        : "bg-blue-50 text-blue-600 border-blue-100"
                       }`}>
                         {u.role || (u.is_admin ? "Admin" : "Job Seeker")}
                       </span>
@@ -149,7 +158,7 @@ export default function AdminUsersPage() {
           <div className="bg-white w-full max-w-xl rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100 animate-slide-up">
             <div className="p-10 border-b border-slate-50 flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <div className="h-12 w-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/30">
                   <ShieldCheck size={28} />
                 </div>
                 <div>
@@ -171,7 +180,7 @@ export default function AdminUsersPage() {
                     <input 
                       name="fullName" 
                       required 
-                      className="w-full h-14 pl-14 pr-6 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all font-bold text-slate-700 placeholder:text-slate-400"
+                      className="w-full h-14 pl-14 pr-6 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all font-bold text-slate-700 placeholder:text-slate-400"
                       placeholder="e.g. Adnan Ahmad"
                     />
                   </div>
@@ -185,7 +194,7 @@ export default function AdminUsersPage() {
                       name="email" 
                       type="email" 
                       required 
-                      className="w-full h-14 pl-14 pr-6 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all font-bold text-slate-700 placeholder:text-slate-400"
+                      className="w-full h-14 pl-14 pr-6 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all font-bold text-slate-700 placeholder:text-slate-400"
                       placeholder="admin@rozgarhub.pk"
                     />
                   </div>
@@ -194,7 +203,7 @@ export default function AdminUsersPage() {
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Specialized Role</label>
-                    <select name="role" className="w-full h-14 px-6 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all font-black text-slate-600 appearance-none cursor-pointer">
+                    <select name="role" className="w-full h-14 px-6 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all font-black text-slate-600 appearance-none cursor-pointer">
                       <option value="Super Admin">Super Admin</option>
                       <option value="Moderator">Moderator</option>
                       <option value="Content Editor">Content Editor</option>
@@ -208,7 +217,7 @@ export default function AdminUsersPage() {
                         name="password" 
                         type="password" 
                         required 
-                        className="w-full h-14 pl-14 pr-6 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all font-bold text-slate-700" 
+                        className="w-full h-14 pl-14 pr-6 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all font-bold text-slate-700" 
                         placeholder="••••••••"
                       />
                     </div>
@@ -220,7 +229,7 @@ export default function AdminUsersPage() {
                 <Button type="button" variant="ghost" onClick={() => setIsModalOpen(false)} className="flex-1 h-14 rounded-2xl font-black text-slate-400 hover:bg-slate-50 uppercase tracking-widest text-[11px]">Cancel Mission</Button>
                 <Button 
                   disabled={registerLoading}
-                  className="flex-[2] h-14 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black shadow-xl shadow-indigo-500/20 gap-3 transition-all active:scale-95"
+                  className="flex-[2] h-14 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black shadow-xl shadow-blue-500/20 gap-3 transition-all active:scale-95"
                 >
                   {registerLoading ? <Loader2 className="animate-spin" size={20} /> : <ShieldCheck size={20} />}
                   Complete Registration

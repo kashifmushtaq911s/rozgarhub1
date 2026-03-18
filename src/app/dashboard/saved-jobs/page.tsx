@@ -36,7 +36,7 @@ export default function SavedJobsPage() {
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f5f9] px-4 py-1.5 text-xs font-black text-[#475569] uppercase tracking-wider">
                         <Clock size={14} className="text-[var(--color-primary)]" /> {job.type}
                       </span>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-4 py-1.5 text-xs font-black text-green-700 uppercase tracking-wider border border-green-100">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-4 py-1.5 text-xs font-black text-blue-700 uppercase tracking-wider border border-blue-100">
                         <DollarSign size={14} /> {job.salary}
                       </span>
                     </div>

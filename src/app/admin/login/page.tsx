@@ -42,7 +42,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-[var(--color-secondary)] flex items-center justify-center p-4">
       <div className="w-full max-w-md animate-fade-in">
         <div className="text-center mb-8">
-          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--color-primary)] text-white shadow-lg shadow-green-500/20 mb-4">
+          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--color-primary)] text-white shadow-lg shadow-blue-500/20 mb-4">
             <ShieldCheck size={32} />
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight">Admin Login</h1>
@@ -89,7 +89,7 @@ export default function AdminLoginPage() {
               <Button 
                 type="submit" 
                 disabled={loading}
-                className="w-full h-12 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-bold text-lg shadow-lg shadow-green-500/10 gap-2"
+                className="w-full h-12 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-bold text-lg shadow-lg shadow-blue-500/10 gap-2"
               >
                 {loading ? (
                   <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

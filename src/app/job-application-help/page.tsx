@@ -34,7 +34,7 @@ export default function JobApplicationHelpPage() {
               "Receive updates when applications are successfully submitted."
             ].map((benefit, i) => (
               <li key={i} className="flex items-start gap-3 text-[#4a5568] text-lg">
-                <CheckCircle className="text-green-500 shrink-0 mt-1" size={20} />
+                <CheckCircle className="text-blue-500 shrink-0 mt-1" size={20} />
                 <span>{benefit}</span>
               </li>
             ))}

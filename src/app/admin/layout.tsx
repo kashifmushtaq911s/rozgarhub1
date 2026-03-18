@@ -47,18 +47,18 @@ export default function AdminLayout({
   ]
 
   return (
-    <div className="min-h-screen bg-[#f1f5f9] font-sans selection:bg-indigo-100 selection:text-indigo-900 flex justify-center overflow-x-hidden">
+    <div className="min-h-screen bg-[#f1f5f9] font-sans selection:bg-blue-100 selection:text-blue-900 flex justify-center overflow-x-hidden">
       <div className="flex flex-col lg:flex-row w-full max-w-[1800px] lg:h-screen lg:overflow-hidden shadow-2xl shadow-slate-200">
         
         {/* Mobile Admin Header */}
         <div className="lg:hidden bg-[#1e293b] text-white p-4 flex items-center justify-between sticky top-0 z-[60] border-b border-slate-700 shadow-lg">
           <div className="flex items-center gap-3">
-             <div className="h-10 w-10 bg-gradient-to-tr from-emerald-500 to-teal-400 text-white p-2 rounded-xl flex items-center justify-center">
+             <div className="h-10 w-10 bg-gradient-to-tr from-blue-500 to-blue-400 text-white p-2 rounded-xl flex items-center justify-center">
                 <ShieldAlert size={20} />
              </div>
-             <span className="font-black tracking-tighter">Rozgarhub <span className="text-emerald-400 text-[10px] ml-1 uppercase">Admin</span></span>
+             <span className="font-black tracking-tighter">Rozgarhub <span className="text-blue-400 text-[10px] ml-1 uppercase">Admin</span></span>
           </div>
-          <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-emerald-400 hover:bg-emerald-500/10 rounded-xl">
+          <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-blue-400 hover:bg-blue-500/10 rounded-xl">
              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </Button>
         </div>
@@ -78,12 +78,12 @@ export default function AdminLayout({
         `}>
           <div className="h-full bg-[#1e293b] text-slate-300 p-8 flex flex-col overflow-y-auto custom-scrollbar">
             <div className="mb-10 hidden lg:flex items-center gap-4 group cursor-pointer" onClick={() => router.push("/")}>
-              <div className="h-14 w-14 bg-gradient-to-tr from-emerald-500 to-teal-400 text-white p-3 rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-500/30 group-hover:scale-110 transition-transform duration-300">
+              <div className="h-14 w-14 bg-gradient-to-tr from-blue-500 to-blue-400 text-white p-3 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
                 <ShieldAlert size={28} />
               </div>
               <div>
                 <h2 className="text-2xl font-black tracking-tighter text-white">Rozgarhub</h2>
-                <p className="text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em]">Command Center</p>
+                <p className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em]">Command Center</p>
               </div>
             </div>
 
@@ -98,16 +98,16 @@ export default function AdminLayout({
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center justify-between rounded-2xl px-5 py-4 text-sm font-bold transition-all duration-300 group ${
                       isActive 
-                        ? "bg-gradient-to-r from-emerald-500/20 to-transparent border-l-4 border-emerald-500 text-emerald-400" 
+                        ? "bg-gradient-to-r from-blue-500/20 to-transparent border-l-4 border-blue-500 text-blue-400" 
                         : "hover:bg-slate-800 hover:text-white"
                     }`}
                   >
                     <div className="flex items-center gap-4">
-                      <item.icon size={20} className={isActive ? "text-emerald-400" : "text-slate-400 group-hover:text-emerald-300 transition-colors"} />
+                      <item.icon size={20} className={isActive ? "text-blue-400" : "text-slate-400 group-hover:text-blue-300 transition-colors"} />
                       {item.label}
                     </div>
                     {isActive && (
-                      <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                      <div className="h-1.5 w-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
                     )}
                   </Link>
                 )
@@ -116,7 +116,7 @@ export default function AdminLayout({
             
             <div className="pt-8 mt-8 border-t border-slate-800">
                <div className="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-5 mb-6 flex items-center gap-4">
-                 <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 text-white flex items-center justify-center font-black shadow-lg shadow-indigo-500/20">
+                 <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 text-white flex items-center justify-center font-black shadow-lg shadow-blue-500/20">
                    SA
                  </div>
                  <div className="flex-1 min-w-0">

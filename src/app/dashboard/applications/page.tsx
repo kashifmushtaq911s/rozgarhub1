@@ -42,7 +42,7 @@ export default function ApplicationsPage() {
                   <span className={`inline-flex items-center rounded-full px-5 py-2 text-[10px] font-black uppercase tracking-widest border ${
                     app.status === 'Under Review' ? 'bg-blue-50 text-blue-700 border-blue-100' :
                     app.status === 'Interviewed' ? 'bg-purple-50 text-purple-700 border-purple-100' :
-                    app.status === 'Hired' ? 'bg-green-50 text-green-700 border-green-100' :
+                    app.status === 'Hired' ? 'bg-blue-50 text-blue-700 border-blue-100' :
                     'bg-slate-50 text-slate-600 border-slate-100'
                   }`}>
                     {app.status}

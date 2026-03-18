@@ -49,7 +49,7 @@ export default function Header() {
               </Button>
             </Link>
             <Link href="/auth/register">
-              <Button className="rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-bold px-6 border-none shadow-lg shadow-green-500/20">
+              <Button className="rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-bold px-6 border-none shadow-lg shadow-blue-500/20">
                 Register
               </Button>
             </Link>
@@ -102,7 +102,7 @@ export default function Header() {
                     </Button>
                   </Link>
                   <Link href="/auth/register" className="w-full" onClick={() => setIsMenuOpen(false)}>
-                    <Button className="w-full h-14 rounded-2xl bg-[var(--color-primary)] text-white font-black uppercase tracking-widest text-[11px] shadow-xl shadow-green-500/20">
+                    <Button className="w-full h-14 rounded-2xl bg-[var(--color-primary)] text-white font-black uppercase tracking-widest text-[11px] shadow-xl shadow-blue-500/20">
                       Join Hub
                     </Button>
                   </Link>

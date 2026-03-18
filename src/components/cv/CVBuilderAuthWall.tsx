@@ -104,7 +104,7 @@ export default function CVBuilderAuthWall({ onSignIn }: CVBuilderAuthWallProps) 
 
           {/* Footer Security */}
           <div className="mt-6 flex items-center justify-center gap-2 text-xs text-[var(--color-muted-foreground)]">
-            <ShieldCheck size={14} className="text-green-500" />
+            <ShieldCheck size={14} className="text-blue-500" />
             <span>Secure & Private • 100% Free Service</span>
           </div>
         </div>

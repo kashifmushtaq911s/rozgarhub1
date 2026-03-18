@@ -61,16 +61,16 @@ export default function AdminUpcomingPage() {
   return (
     <div className="space-y-10">
       <div>
-        <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-2">Upcoming <span className="text-emerald-600">News</span></h1>
+        <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-2">Upcoming <span className="text-blue-600">News</span></h1>
         <p className="text-slate-500 font-medium">Add, edit, and manage upcoming job announcements and news updates.</p>
       </div>
 
       {/* Add / Edit Form */}
       <Card className="rounded-[2.5rem] border-none shadow-xl shadow-slate-200/60 bg-white overflow-hidden">
-        <div className="h-2 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+        <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-500"></div>
         <CardHeader className="bg-slate-50/50 border-b border-slate-100 p-8">
           <CardTitle className="text-xl font-black flex items-center gap-3 text-slate-800">
-            <div className="h-8 w-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-blue-500 text-white flex items-center justify-center">
               <Bell size={18} />
             </div>
             {editId ? "Edit News Item" : "Add New Update"}
@@ -102,10 +102,10 @@ export default function AdminUpcomingPage() {
           </div>
           <div className="space-y-2">
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Description</label>
-            <textarea value={form.desc} onChange={e => setForm({ ...form, desc: e.target.value })} rows={4} placeholder="Brief summary of the news item..." className="w-full rounded-[2rem] border border-slate-200 px-6 py-4 font-bold text-slate-600 focus:outline-none focus:ring-4 focus:ring-emerald-100 resize-none" />
+            <textarea value={form.desc} onChange={e => setForm({ ...form, desc: e.target.value })} rows={4} placeholder="Brief summary of the news item..." className="w-full rounded-[2rem] border border-slate-200 px-6 py-4 font-bold text-slate-600 focus:outline-none focus:ring-4 focus:ring-blue-100 resize-none" />
           </div>
           <div className="flex gap-4">
-            <Button onClick={editId ? handleUpdate : handleAdd} className="h-14 px-10 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black shadow-xl shadow-emerald-500/20 gap-3">
+            <Button onClick={editId ? handleUpdate : handleAdd} className="h-14 px-10 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black shadow-xl shadow-blue-500/20 gap-3">
               {editId ? <><Save size={18} /> Update News</> : <><Plus size={18} /> Add News</>}
             </Button>
             {editId && (
@@ -137,7 +137,7 @@ export default function AdminUpcomingPage() {
                     <p className="text-xs text-slate-400 mt-1 line-clamp-1">{item.desc}</p>
                   </td>
                   <td className="p-6">
-                    <span className="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase">{item.category}</span>
+                    <span className="px-3 py-1 rounded-lg bg-blue-50 text-blue-700 text-[10px] font-black uppercase">{item.category}</span>
                   </td>
                   <td className="p-6">
                     <span className="text-xs font-bold text-slate-400 flex items-center gap-2"><Calendar size={14} />{item.date}</span>

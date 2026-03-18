@@ -26,7 +26,7 @@ export default function ContactPage() {
         <div className="bg-white border border-[#e2e8f0] p-10 rounded-[2.5rem] shadow-sm relative overflow-hidden">
           {submitted ? (
             <div className="h-full flex flex-col items-center justify-center text-center animate-in zoom-in duration-300 py-20">
-              <div className="h-24 w-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-8 shadow-inner">
+              <div className="h-24 w-24 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-8 shadow-inner">
                 <CheckCircle2 size={48} />
               </div>
               <h2 className="text-3xl font-black text-[#0f172a] mb-4">Message Sent!</h2>
