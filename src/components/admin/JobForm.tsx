@@ -36,13 +36,9 @@ export default function JobForm({ initialData, onSubmit, isEditing = false }: Jo
   const [loading, setLoading] = useState(false)
   const [selectedProvince, setSelectedProvince] = useState(initialData?.province || "")
   const [logoPreview, setLogoPreview] = useState<string | null>(initialData?.logo_url || null)
-  const [deadlineType, setDeadlineType] = useState<"date" | "relative">("date")
-
-  useEffect(() => {
-    if (initialData?.deadline && initialData.deadline.includes("publication")) {
-      setDeadlineType("relative")
-    }
-  }, [initialData])
+  const [deadlineType, setDeadlineType] = useState<"date" | "relative">(
+    initialData?.deadline?.includes("publication") ? "relative" : "date"
+  )
 
   const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]

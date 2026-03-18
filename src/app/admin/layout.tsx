@@ -14,6 +14,9 @@ import {
   ChevronRight
 } from "lucide-react"
 
+import { useState } from "react"
+import { Menu, X } from "lucide-react"
+
 export default function AdminLayout({
   children,
 }: {
@@ -21,6 +24,7 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname()
   const router = useRouter()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   // Don't show layout on login page
   if (pathname === '/admin/login') {
@@ -44,11 +48,36 @@ export default function AdminLayout({
 
   return (
     <div className="min-h-screen bg-[#f1f5f9] font-sans selection:bg-indigo-100 selection:text-indigo-900 flex justify-center overflow-x-hidden">
-      <div className="flex flex-col lg:flex-row w-full max-w-[1800px] h-screen overflow-hidden shadow-2xl shadow-slate-200">
-        {/* Admin Sidebar - Sticky and Contained */}
-        <aside className="w-full lg:w-80 shrink-0 z-20 border-r border-slate-700 bg-[#1e293b]">
+      <div className="flex flex-col lg:flex-row w-full max-w-[1800px] lg:h-screen lg:overflow-hidden shadow-2xl shadow-slate-200">
+        
+        {/* Mobile Admin Header */}
+        <div className="lg:hidden bg-[#1e293b] text-white p-4 flex items-center justify-between sticky top-0 z-[60] border-b border-slate-700 shadow-lg">
+          <div className="flex items-center gap-3">
+             <div className="h-10 w-10 bg-gradient-to-tr from-emerald-500 to-teal-400 text-white p-2 rounded-xl flex items-center justify-center">
+                <ShieldAlert size={20} />
+             </div>
+             <span className="font-black tracking-tighter">Rozgarhub <span className="text-emerald-400 text-[10px] ml-1 uppercase">Admin</span></span>
+          </div>
+          <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-emerald-400 hover:bg-emerald-500/10 rounded-xl">
+             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
+        </div>
+
+        {/* Admin Sidebar Backdrop (Mobile Only) */}
+        {isMobileMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 lg:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+
+        {/* Admin Sidebar - Responsive Overlay on Mobile */}
+        <aside className={`
+          fixed inset-y-0 left-0 z-50 w-72 lg:relative lg:inset-auto lg:translate-x-0 lg:w-80 shrink-0 border-r border-slate-700 bg-[#1e293b] transition-transform duration-300 shadow-2xl lg:shadow-none
+          ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}>
           <div className="h-full bg-[#1e293b] text-slate-300 p-8 flex flex-col overflow-y-auto custom-scrollbar">
-            <div className="mb-10 flex items-center gap-4 group cursor-pointer" onClick={() => router.push("/")}>
+            <div className="mb-10 hidden lg:flex items-center gap-4 group cursor-pointer" onClick={() => router.push("/")}>
               <div className="h-14 w-14 bg-gradient-to-tr from-emerald-500 to-teal-400 text-white p-3 rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-500/30 group-hover:scale-110 transition-transform duration-300">
                 <ShieldAlert size={28} />
               </div>
@@ -58,7 +87,7 @@ export default function AdminLayout({
               </div>
             </div>
 
-            <nav className="space-y-2 flex-1">
+            <nav className="space-y-2 flex-1 pt-16 lg:pt-0">
               <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 ml-4">Management Hub</p>
               {navItems.map((item) => {
                 const isActive = pathname === item.href
@@ -66,6 +95,7 @@ export default function AdminLayout({
                   <Link 
                     key={item.href} 
                     href={item.href} 
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center justify-between rounded-2xl px-5 py-4 text-sm font-bold transition-all duration-300 group ${
                       isActive 
                         ? "bg-gradient-to-r from-emerald-500/20 to-transparent border-l-4 border-emerald-500 text-emerald-400" 
@@ -106,7 +136,7 @@ export default function AdminLayout({
         </aside>
 
         {/* Admin Content - Clean and Centered Flow */}
-        <main className="flex-1 bg-white p-6 lg:p-12 animate-fade-in overflow-y-auto overflow-x-hidden shadow-inner custom-scrollbar">
+        <main className="flex-1 bg-white p-6 lg:p-12 animate-fade-in lg:overflow-y-auto lg:overflow-x-hidden shadow-inner custom-scrollbar">
           <div className="max-w-full mx-auto">
             {children}
           </div>

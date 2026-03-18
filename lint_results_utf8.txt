@@ -1,0 +1,205 @@
+﻿
+> rozgarhub@0.1.0 lint
+> eslint
+
+
+H:\Rozgarhub\fetch_depts.js
+  1:15  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:12  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+H:\Rozgarhub\src\actions\admin.ts
+    8:11  warning  'now' is assigned a value but never used               @typescript-eslint/no-unused-vars
+    9:35  warning  'jobsError' is assigned a value but never used         @typescript-eslint/no-unused-vars
+   18:39  warning  'usersError' is assigned a value but never used        @typescript-eslint/no-unused-vars
+   60:19  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+   82:19  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+   98:19  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  123:9   error    'updateData' is never reassigned. Use 'const' instead  prefer-const
+  123:21  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  143:13  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  163:17  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  178:19  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  187:11  warning  'password' is assigned a value but never used          @typescript-eslint/no-unused-vars
+  208:17  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+
+H:\Rozgarhub\src\actions\jobs.ts
+   40:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   80:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+H:\Rozgarhub\src\app\admin\applications\page.tsx
+  4:10  warning  'FileText' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\app\admin\jobs\page.tsx
+   12:36  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-explicit-any
+   13:10  warning  'loading' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+   16:5   error    Error: Cannot access variable before it is declared
+
+`fetchJobs` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+H:\Rozgarhub\src\app\admin\jobs\page.tsx:16:5
+  14 |
+  15 |   useEffect(() => {
+> 16 |     fetchJobs()
+     |     ^^^^^^^^^ `fetchJobs` accessed before it is declared
+  17 |   }, [])
+  18 |
+  19 |   const fetchJobs = async () => {
+
+H:\Rozgarhub\src\app\admin\jobs\page.tsx:19:3
+  17 |   }, [])
+  18 |
+> 19 |   const fetchJobs = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 20 |     setLoading(true)
+     | ^^^^^^^^^^^^^^^^^^^^
+> 21 |     const result = await getAdminJobs()
+     | ^^^^^^^^^^^^^^^^^^^^
+> 22 |     if (result.success) {
+     | ^^^^^^^^^^^^^^^^^^^^
+> 23 |       setJobs(result.data || [])
+     | ^^^^^^^^^^^^^^^^^^^^
+> 24 |     }
+     | ^^^^^^^^^^^^^^^^^^^^
+> 25 |     setLoading(false)
+     | ^^^^^^^^^^^^^^^^^^^^
+> 26 |   }
+     | ^^^^ `fetchJobs` is declared here
+  27 |
+  28 |   const handleDelete = async (id: string, title: string) => {
+  29 |     if (confirm(`Are you sure you want to permanently delete "${title}"? This cannot be undone.`)) {  react-hooks/immutability
+  114:43  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @next/next/no-img-element
+
+H:\Rozgarhub\src\app\admin\layout.tsx
+  14:3  warning  'ChevronRight' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\app\admin\login\page.tsx
+  5:29  warning  'CardHeader' is defined but never used  @typescript-eslint/no-unused-vars
+  5:41  warning  'CardTitle' is defined but never used   @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\app\admin\page.tsx
+    2:43  warning  'Activity' is defined but never used      @typescript-eslint/no-unused-vars
+    2:60  warning  'ShieldCheck' is defined but never used   @typescript-eslint/no-unused-vars
+    2:84  warning  'CheckCircle' is defined but never used   @typescript-eslint/no-unused-vars
+    2:97  warning  'AlertCircle' is defined but never used   @typescript-eslint/no-unused-vars
+   13:23  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   21:23  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   29:23  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  110:47  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+H:\Rozgarhub\src\app\admin\settings\page.tsx
+  4:10  warning  'Settings' is defined but never used  @typescript-eslint/no-unused-vars
+  4:35  warning  'Bell' is defined but never used      @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\app\admin\study-material\page.tsx
+  7:67  warning  'Download' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\app\admin\users\page.tsx
+  10:38  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-explicit-any
+  16:5   error  Error: Cannot access variable before it is declared
+
+`fetchUsers` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+H:\Rozgarhub\src\app\admin\users\page.tsx:16:5
+  14 |
+  15 |   useEffect(() => {
+> 16 |     fetchUsers()
+     |     ^^^^^^^^^^ `fetchUsers` accessed before it is declared
+  17 |   }, [])
+  18 |
+  19 |   const fetchUsers = async () => {
+
+H:\Rozgarhub\src\app\admin\users\page.tsx:19:3
+  17 |   }, [])
+  18 |
+> 19 |   const fetchUsers = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 20 |     setLoading(true)
+     | ^^^^^^^^^^^^^^^^^^^^
+> 21 |     const result = await getUsers()
+     | ^^^^^^^^^^^^^^^^^^^^
+> 22 |     if (result.success) {
+     | ^^^^^^^^^^^^^^^^^^^^
+> 23 |       setUsers(result.data || [])
+     | ^^^^^^^^^^^^^^^^^^^^
+> 24 |     }
+     | ^^^^^^^^^^^^^^^^^^^^
+> 25 |     setLoading(false)
+     | ^^^^^^^^^^^^^^^^^^^^
+> 26 |   }
+     | ^^^^ `fetchUsers` is declared here
+  27 |
+  28 |   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+  29 |     e.preventDefault()  react-hooks/immutability
+
+H:\Rozgarhub\src\app\contact\page.tsx
+  4:10  warning  'Metadata' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\app\job\[slug]\page.tsx
+    4:97   warning  'Users' is defined but never used                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+    4:117  warning  'AlertCircle' is defined but never used                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+   21:29   error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  123:23   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  178:23   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+H:\Rozgarhub\src\app\jobs\page.tsx
+   18:36  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  215:33  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+H:\Rozgarhub\src\app\news\[slug]\page.tsx
+  71:19   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  71:157  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+H:\Rozgarhub\src\app\page.tsx
+    5:47  warning  'Users' is defined but never used                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+  126:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  170:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+H:\Rozgarhub\src\app\upcoming\page.tsx
+  2:27  warning  'Briefcase' is defined but never used  @typescript-eslint/no-unused-vars
+
+H:\Rozgarhub\src\components\admin\JobForm.tsx
+   29:17  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-explicit-any
+   43:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+H:\Rozgarhub\src\components\admin\JobForm.tsx:43:7
+  41 |   useEffect(() => {
+  42 |     if (initialData?.deadline && initialData.deadline.includes("publication")) {
+> 43 |       setDeadlineType("relative")
+     |       ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  44 |     }
+  45 |   }, [initialData])
+  46 |  react-hooks/set-state-in-effect
+  104:35  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @next/next/no-img-element
+
+H:\Rozgarhub\src\components\cv\CVBuilderClient.tsx
+   41:20  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+H:\Rozgarhub\src\components\cv\CVBuilderClient.tsx:41:20
+  39 |
+  40 |   // Watch entire form value to pass down to PDF preview
+> 41 |   const formData = form.watch()
+     |                    ^^^^ React Hook Form's `useForm()` API returns a `watch()` function which cannot be memoized safely.
+  42 |
+  43 |   const { fields: expFields, append: appendExp, remove: removeExp } = useFieldArray({
+  44 |     control: form.control,  react-hooks/incompatible-library
+   89:16  warning  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  172:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @next/next/no-img-element
+
+H:\Rozgarhub\src\components\cv\templates\ModernCV.tsx
+  173:13  warning  Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+H:\Rozgarhub\src\components\ui\accordion.tsx
+  15:3  warning  'type' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 61 problems (28 errors, 33 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+

@@ -26,11 +26,11 @@ export default function Home() {
         <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[800px] bg-[var(--color-primary)]/5 blur-[120px] rounded-full -z-10"></div>
         
         <div className="container relative mx-auto px-4 sm:px-8 text-center animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-8 text-[#0f172a] text-balance leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-8 text-[#0f172a] text-balance leading-[1.1] animate-slide-up">
             Find Your Dream Job <br className="hidden md:block" />
             in <span className="text-[var(--color-primary)]">Pakistan</span>
           </h1>
-          <p className="mx-auto max-w-2xl text-xl text-[#475569] mb-12 font-medium">
+          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-[#475569] mb-12 font-medium px-4">
             Discover premier opportunities, build an industry-standard CV in minutes, and accelerate your career journey.
           </p>
 

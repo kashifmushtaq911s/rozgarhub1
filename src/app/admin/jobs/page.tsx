@@ -12,10 +12,6 @@ export default function AdminJobsPage() {
   const [jobs, setJobs] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    fetchJobs()
-  }, [])
-
   const fetchJobs = async () => {
     setLoading(true)
     const result = await getAdminJobs()
@@ -24,6 +20,10 @@ export default function AdminJobsPage() {
     }
     setLoading(false)
   }
+
+  useEffect(() => {
+    fetchJobs()
+  }, [])
 
   const handleDelete = async (id: string, title: string) => {
     if (confirm(`Are you sure you want to permanently delete "${title}"? This cannot be undone.`)) {

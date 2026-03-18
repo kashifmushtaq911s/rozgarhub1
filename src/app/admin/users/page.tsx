@@ -12,10 +12,6 @@ export default function AdminUsersPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [registerLoading, setRegisterLoading] = useState(false)
 
-  useEffect(() => {
-    fetchUsers()
-  }, [])
-
   const fetchUsers = async () => {
     setLoading(true)
     const result = await getUsers()
@@ -24,6 +20,10 @@ export default function AdminUsersPage() {
     }
     setLoading(false)
   }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

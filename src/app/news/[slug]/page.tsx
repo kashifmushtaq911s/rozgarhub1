@@ -68,7 +68,7 @@ export default async function NewsDetailPage({ params }: Props) {
                 </p>
 
                 <div className="bg-emerald-50/50 border-l-4 border-emerald-500 p-8 rounded-r-3xl my-10 italic font-medium text-emerald-800">
-                  "This policy represents a significant step forward in making national employment more accessible to qualified talent across all provinces."
+                  &quot;This policy represents a significant step forward in making national employment more accessible to qualified talent across all provinces.&quot;
                 </div>
 
                 <h3 className="text-2xl font-black text-slate-900 mt-10 mb-6">How to Prepare?</h3>

@@ -38,11 +38,23 @@ export default function Header() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           <Link href="/cv-builder" className="hidden lg:block text-sm font-bold text-[#475569] transition-all hover:text-[var(--color-primary)]">
             CV Builder
           </Link>
-          {/* Hamburger button - visible below lg (1024px) */}
+          <div className="hidden lg:flex items-center gap-3 ml-2">
+            <Link href="/auth/login">
+              <Button variant="ghost" className="rounded-xl font-bold text-[#475569] hover:text-[var(--color-primary)] hover:bg-transparent">
+                Sign In
+              </Button>
+            </Link>
+            <Link href="/auth/register">
+              <Button className="rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-bold px-6 border-none shadow-lg shadow-green-500/20">
+                Register
+              </Button>
+            </Link>
+          </div>
+          {/* Hamburger button */}
           <Button 
             variant="ghost" 
             size="icon" 
@@ -54,68 +66,51 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay - covers full screen above header */}
+      {/* Mobile Menu Overlay - Refined with Backdrop */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-white lg:hidden" style={{ paddingTop: '64px' }}>
-          <nav className="flex flex-col items-center justify-center h-full gap-6 p-8 -mt-16">
-            <Link 
-              href="/" 
-              className="text-2xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link 
-              href="/jobs" 
-              className="text-2xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Browse Jobs
-            </Link>
-            <Link 
-              href="/upcoming" 
-              className="text-2xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Upcoming Jobs
-            </Link>
-            <Link 
-              href="/study-material" 
-              className="text-2xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Study Material
-            </Link>
-            <Link 
-              href="/job-application-help" 
-              className="text-2xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Job App Help
-            </Link>
-            <Link 
-              href="/cv-builder" 
-              className="text-2xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              CV Builder
-            </Link>
-            <Link 
-              href="/contact" 
-              className="text-2xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact Us
-            </Link>
-            <div className="mt-6 pt-6 border-t border-slate-200 w-full flex flex-col items-center gap-4">
-              <Link href="/auth/login" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="outline" className="rounded-xl px-8 h-12 font-bold border-slate-200 text-slate-600 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]">
-                  Sign In
-                </Button>
-              </Link>
+        <>
+          <div className="fixed inset-0 z-[55] bg-slate-900/60 backdrop-blur-sm lg:hidden animate-fade-in" onClick={() => setIsMenuOpen(false)} />
+          <div className="fixed inset-y-0 right-0 z-[60] w-full max-w-sm bg-white lg:hidden shadow-2xl animate-fade-in">
+            <div className="flex flex-col h-full p-8 pt-24 overflow-y-auto">
+              <nav className="flex flex-col gap-8 flex-1">
+                {[
+                  { label: "Home", href: "/" },
+                  { label: "Browse Jobs", href: "/jobs" },
+                  { label: "Upcoming News", href: "/upcoming" },
+                  { label: "Study Material", href: "/study-material" },
+                  { label: "Job App Help", href: "/job-application-help" },
+                  { label: "CV Builder", href: "/cv-builder" },
+                ].map((item) => (
+                  <Link 
+                    key={item.href} 
+                    href={item.href} 
+                    className="text-2xl font-black text-slate-800 tracking-tight flex items-center justify-between"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                    <div className="h-2 w-2 rounded-full bg-slate-100" />
+                  </Link>
+                ))}
+              </nav>
+              
+              <div className="mt-auto space-y-4 pt-10 border-t border-slate-100">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6 px-1">Platform Account Access</p>
+                <div className="grid grid-cols-2 gap-4">
+                  <Link href="/auth/login" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                    <Button variant="outline" className="w-full h-14 rounded-2xl font-black uppercase tracking-widest text-[11px] border-slate-200">
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link href="/auth/register" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                    <Button className="w-full h-14 rounded-2xl bg-[var(--color-primary)] text-white font-black uppercase tracking-widest text-[11px] shadow-xl shadow-green-500/20">
+                      Join Hub
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
-          </nav>
-        </div>
+          </div>
+        </>
       )}
     </header>
   )
