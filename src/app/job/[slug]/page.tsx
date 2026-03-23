@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { MapPin, Briefcase, Clock, Wallet, Bookmark, Share2, ChevronLeft, Calendar, TrendingUp, Users, CheckCircle, AlertCircle } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { supabase } from "@/lib/supabase"
 import { formatDate } from "@/lib/utils"
 
@@ -118,13 +119,18 @@ export default async function JobDetailPage({ params }: Props) {
                     </h1>
                     {company && <p className="text-xl md:text-2xl font-bold text-emerald-600">{company}</p>}
                  </div>
-                 <div className="h-20 w-20 rounded-3xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 shadow-inner overflow-hidden">
+                  <div className="h-20 w-20 rounded-3xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 shadow-inner overflow-hidden relative">
                     {logoUrl ? (
-                      <img src={logoUrl} alt={company} className="h-full w-full object-cover" />
+                      <Image 
+                        src={logoUrl} 
+                        alt={company} 
+                        fill
+                        className="object-cover" 
+                      />
                     ) : (
                       <Briefcase size={32} className="text-slate-300" />
                     )}
-                 </div>
+                  </div>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -175,11 +181,14 @@ export default async function JobDetailPage({ params }: Props) {
                       <div className="h-0.5 flex-1 bg-slate-50"></div>
                     </h3>
                     <div className="bg-white p-4 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
-                      <img 
-                        src={imageUrl} 
-                        alt={`${title} - Official Advertisement`}
-                        className="w-full h-auto rounded-[2rem] object-contain" 
-                      />
+                      <div className="relative w-full aspect-[4/3]">
+                        <Image 
+                          src={imageUrl} 
+                          alt={`${title} - Official Advertisement`}
+                          fill
+                          className="rounded-[2rem] object-contain" 
+                        />
+                      </div>
                     </div>
                   </div>
                 )}

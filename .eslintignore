@@ -1,8 +1,0 @@
-node_modules/
-.next/
-out/
-build/
-fetch_depts.js
-departments.json
-lint_report.txt
-db_dump.sql

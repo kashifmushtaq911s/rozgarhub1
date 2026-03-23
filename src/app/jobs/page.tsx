@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Search, MapPin, Briefcase, Filter, Clock, Wallet, Loader2 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { getPublishedJobs } from "@/actions/jobs"
 import { formatDate } from "@/lib/utils"
 
@@ -210,9 +211,9 @@ export default function JobsPage() {
                       <CardContent className="p-8">
                         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
                           <div className="flex gap-6">
-                            <div className="hidden sm:flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary)]/5 text-[var(--color-primary)] border border-[var(--color-primary)]/10 group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors duration-500 overflow-hidden">
+                            <div className="hidden sm:flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary)]/5 text-[var(--color-primary)] border border-[var(--color-primary)]/10 group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors duration-500 overflow-hidden relative">
                               {job.logo_url ? (
-                                <img src={job.logo_url} alt="" className="h-full w-full object-cover" />
+                                <Image src={job.logo_url} alt="" fill className="object-cover" />
                               ) : (
                                 <Briefcase size={28} />
                               )}

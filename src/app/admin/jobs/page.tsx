@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import { Plus, Search, Filter, Edit, Trash2, Eye, Briefcase, Sparkles, TrendingUp, Calendar } from "lucide-react"
 import Link from "next/link"
 import { getAdminJobs, deleteJob } from "@/actions/admin"
@@ -123,8 +124,8 @@ export default function AdminJobsPage() {
                 <tr key={job.id} className="border-b border-slate-50 hover:bg-slate-50/50 transition-all group">
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 shrink-0 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:scale-110 transition-transform overflow-hidden shadow-inner">
-                          {job.logo_url ? <img src={job.logo_url} alt="" className="h-full w-full object-cover" /> : <Briefcase size={16} />}
+                        <div className="h-10 w-10 shrink-0 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:scale-110 transition-transform overflow-hidden shadow-inner relative">
+                          {job.logo_url ? <Image src={job.logo_url} alt="" fill className="object-cover" /> : <Briefcase size={16} />}
                         </div>
                         <div className="min-w-0">
                            <p className="font-black text-slate-900 group-hover:text-blue-600 transition-colors uppercase tracking-tight truncate text-[13px]">{job.title}</p>

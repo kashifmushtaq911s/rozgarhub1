@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Save, Upload, Briefcase, MapPin, FileText } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 import { JOB_CATEGORIES } from "@/data/departments"
 
@@ -96,8 +97,8 @@ export default function JobForm({ initialData, onSubmit, isEditing = false }: Jo
                <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">logo_url</label>
                <input type="file" name="logo_url" accept="image/*" className="hidden" id="logo-upload" onChange={handleLogoChange} />
                <label htmlFor="logo-upload" className="flex items-center gap-4 px-5 h-14 border-2 border-dashed border-slate-200 rounded-2xl cursor-pointer hover:bg-slate-50">
-                 <div className="h-9 w-9 rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
-                   {logoPreview ? <img src={logoPreview} alt="" className="h-full w-full object-cover" /> : <Upload size={18} />}
+                 <div className="h-9 w-9 rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden relative">
+                   {logoPreview ? <Image src={logoPreview} alt="" fill className="object-cover" /> : <Upload size={18} />}
                  </div>
                  <span className="text-[10px] font-black uppercase text-slate-500">Pick Logo</span>
                </label>

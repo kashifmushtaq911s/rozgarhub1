@@ -12,13 +12,11 @@ const AccordionContext = React.createContext<{
 
 export function Accordion({ 
   children, 
-  type = "single", 
   collapsible = true, 
   defaultValue, 
   className 
 }: { 
   children: React.ReactNode; 
-  type?: "single"; 
   collapsible?: boolean; 
   defaultValue?: string;
   className?: string;

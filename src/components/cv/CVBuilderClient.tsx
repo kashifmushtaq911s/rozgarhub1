@@ -15,6 +15,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import dynamic from "next/dynamic"
+import Image from "next/image"
 
 // Import our isolated preview component dynamically to completely bypass SSR analysis of @react-pdf/renderer
 const CVPreview = dynamic(
@@ -131,7 +132,7 @@ export default function CVBuilderClient() {
         </div>
         
         <div className="p-8 overflow-y-auto flex-1 custom-scrollbar">
-          <Accordion type="single" collapsible defaultValue="personal-info" className="w-full space-y-6">
+          <Accordion collapsible defaultValue="personal-info" className="w-full space-y-6">
             {/* Personal Info */}
             <AccordionItem value="personal-info" className="border-[#e2e8f0] bg-[#f8fafc] rounded-3xl px-6 data-[state=open]:shadow-md transition-all group overflow-hidden">
               <AccordionTrigger className="hover:no-underline text-xl font-black text-[#0f172a] py-6 group-data-[state=open]:text-[var(--color-primary)]">
@@ -168,8 +169,8 @@ export default function CVBuilderClient() {
                     <label className="text-xs font-black uppercase tracking-widest text-[#64748b] ml-1">Professional Photo</label>
                     <div className="flex items-center gap-5">
                       {form.watch("personalInfo.photo") && (
-                        <div className="h-14 w-14 overflow-hidden rounded-2xl border-2 border-[var(--color-primary)]/20 shadow-lg shrink-0">
-                          <img src={form.watch("personalInfo.photo")} alt="Profile" className="h-full w-full object-cover" />
+                        <div className="h-14 w-14 overflow-hidden rounded-2xl border-2 border-[var(--color-primary)]/20 shadow-lg shrink-0 relative">
+                          <Image src={form.watch("personalInfo.photo")!} alt="Profile" fill className="object-cover" />
                         </div>
                       )}
                       <div className="flex-1">

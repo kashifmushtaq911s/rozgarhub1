@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* Move utilities to the top as required by some Tailwind 4 versions */
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+@utility animate-pulse-slow {
+  animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@utility custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e2e8f0 transparent;
+}
+
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -79,22 +95,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Base custom utility classes */
-@utility glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-}
-
-@utility animate-pulse-slow {
-  animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@utility custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #e2e8f0 transparent;
-}
-
 /* Fallback for webkit browsers that don't support standard scrollbar-width yet */
 ::-webkit-scrollbar {
   width: 6px;
@@ -109,12 +109,4 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #cbd5e1;
-}
-
-.button {
-  color: red;
-}
-
-.button .icon {
-  color: blue;
 }

@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Search, MapPin, Briefcase, FileText, Users } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const PROVINCE_CITIES: Record<string, string[]> = {
   punjab: ["Lahore", "Faisalabad", "Rawalpindi", "Multan", "Gujranwala", "Sialkot", "Bahawalpur", "Sargodha", "Sahiwal", "Rahim Yar Khan", "Sheikhupura", "Jhang", "Dera Ghazi Khan", "Gujrat", "Jhelum", "Kasur", "Okara", "Vehari", "Muzaffargarh", "Mianwali", "Chiniot", "Attock", "Hafizabad", "Khanewal", "Bhakkar", "Layyah", "Lodhran", "Narowal", "Pakpattan", "Toba Tek Singh", "Nankana Sahib", "Mandi Bahauddin", "Chakwal", "Khushab", "Rajanpur"].sort(),
@@ -123,7 +124,7 @@ export default function Home() {
             ].map((cat, i) => (
               <Link key={i} href={`/jobs?category=${cat.name.toLowerCase().replace(/ & /g, '-')}`}>
                 <div className="group cursor-pointer rounded-3xl overflow-hidden relative h-56 transition-all hover:shadow-2xl hover:-translate-y-2">
-                  <img src={cat.image} alt={cat.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <Image src={cat.image} alt={cat.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                     <h3 className="font-black text-xl text-white mb-1 tracking-tight">{cat.name}</h3>
@@ -166,8 +167,8 @@ export default function Home() {
                       <p className="text-lg sm:text-xl font-black text-slate-900 tracking-wider uppercase">MUHAMMAD AHMED</p>
                       <p className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-[0.25em] mt-1">Senior Software Engineer</p>
                     </div>
-                    <div className="h-14 w-14 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
-                      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=150&h=150" alt="Candidate" className="h-full w-full object-cover" />
+                    <div className="h-14 w-14 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 overflow-hidden shadow-sm relative">
+                      <Image src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=150&h=150" alt="Candidate" fill className="object-cover" />
                     </div>
                   </div>
 
