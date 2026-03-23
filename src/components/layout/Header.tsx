@@ -1,14 +1,40 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { BriefcaseBusiness, Menu, X } from "lucide-react"
-import { useState } from "react"
-import { usePathname } from "next/navigation"
+import { supabase } from "@/lib/supabase"
+import { User } from "@supabase/supabase-js"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState(true)
   const pathname = usePathname()
+  const router = useRouter()
+
+  useEffect(() => {
+    // Check initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null)
+      setLoading(false)
+    })
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    router.refresh()
+    router.push("/")
+  }
 
   if (pathname.startsWith('/admin')) return null
 
@@ -42,17 +68,41 @@ export default function Header() {
           <Link href="/cv-builder" className="hidden lg:block text-sm font-bold text-[#475569] transition-all hover:text-[var(--color-primary)]">
             CV Builder
           </Link>
+          
           <div className="hidden lg:flex items-center gap-3 ml-2">
-            <Link href="/auth/login">
-              <Button variant="ghost" className="rounded-xl font-bold text-[#475569] hover:text-[var(--color-primary)] hover:bg-transparent">
-                Sign In
-              </Button>
-            </Link>
-            <Link href="/auth/register">
-              <Button className="rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-bold px-6 border-none shadow-lg shadow-blue-500/20">
-                Register
-              </Button>
-            </Link>
+            {!loading && (
+              <>
+                {user ? (
+                  <div className="flex items-center gap-3">
+                    <Button 
+                      variant="ghost" 
+                      className="rounded-xl font-bold text-[#475569] hover:text-[var(--color-primary)] hover:bg-transparent"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </Button>
+                    <Link href="/profile">
+                      <Button className="rounded-xl bg-slate-900 hover:bg-black text-white font-bold px-6 shadow-lg shadow-slate-900/10 border-none transition-all active:scale-95">
+                        My Account
+                      </Button>
+                    </Link>
+                  </div>
+                ) : (
+                  <>
+                    <Link href="/auth/login">
+                      <Button variant="ghost" className="rounded-xl font-bold text-[#475569] hover:text-[var(--color-primary)] hover:bg-transparent">
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link href="/auth/register">
+                      <Button className="rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-bold px-6 border-none shadow-lg shadow-blue-500/20">
+                        Register
+                      </Button>
+                    </Link>
+                  </>
+                )}
+              </>
+            )}
           </div>
           {/* Hamburger button */}
           <Button 
@@ -70,7 +120,7 @@ export default function Header() {
       {isMenuOpen && (
         <>
           <div className="fixed inset-0 z-[55] bg-slate-900/60 backdrop-blur-sm lg:hidden animate-fade-in" onClick={() => setIsMenuOpen(false)} />
-          <div className="fixed inset-y-0 right-0 z-[60] w-full max-w-sm bg-white lg:hidden shadow-2xl animate-fade-in">
+          <div className="fixed inset-y-0 right-0 z-[60] w-full max-sm bg-white lg:hidden shadow-2xl animate-fade-in">
             <div className="flex flex-col h-full p-8 pt-24 overflow-y-auto">
               <nav className="flex flex-col gap-8 flex-1">
                 {[
@@ -96,16 +146,39 @@ export default function Header() {
               <div className="mt-auto space-y-4 pt-10 border-t border-slate-100">
                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6 px-1">Platform Account Access</p>
                 <div className="grid grid-cols-2 gap-4">
-                  <Link href="/auth/login" className="w-full" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="outline" className="w-full h-14 rounded-2xl font-black uppercase tracking-widest text-[11px] border-slate-200">
-                      Sign In
-                    </Button>
-                  </Link>
-                  <Link href="/auth/register" className="w-full" onClick={() => setIsMenuOpen(false)}>
-                    <Button className="w-full h-14 rounded-2xl bg-[var(--color-primary)] text-white font-black uppercase tracking-widest text-[11px] shadow-xl shadow-blue-500/20">
-                      Join Hub
-                    </Button>
-                  </Link>
+                  {!loading && (
+                    <>
+                      {user ? (
+                        <div className="col-span-2 flex flex-col gap-3">
+                          <Link href="/profile" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                            <Button className="w-full h-14 rounded-2xl bg-slate-900 text-white font-black uppercase tracking-widest text-[11px]">
+                              My Account
+                            </Button>
+                          </Link>
+                          <Button 
+                            variant="outline" 
+                            className="w-full h-14 rounded-2xl font-black uppercase tracking-widest text-[11px] border-slate-200"
+                            onClick={handleSignOut}
+                          >
+                            Sign Out
+                          </Button>
+                        </div>
+                      ) : (
+                        <>
+                          <Link href="/auth/login" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                            <Button variant="outline" className="w-full h-14 rounded-2xl font-black uppercase tracking-widest text-[11px] border-slate-200">
+                              Sign In
+                            </Button>
+                          </Link>
+                          <Link href="/auth/register" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                            <Button className="w-full h-14 rounded-2xl bg-[var(--color-primary)] text-white font-black uppercase tracking-widest text-[11px] shadow-xl shadow-blue-500/20">
+                              Join Hub
+                            </Button>
+                          </Link>
+                        </>
+                      )}
+                    </>
+                  )}
                 </div>
               </div>
             </div>

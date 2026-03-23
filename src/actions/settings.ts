@@ -11,7 +11,7 @@ export async function getSiteSettings() {
       .single()
 
     if (error) {
-      if (error.code === 'PGRST116') {
+      if (error.code === 'PGRST116' || error.code === 'PGRST205') {
         // Table or row doesn't exist, return defaults
         return {
           success: true,
